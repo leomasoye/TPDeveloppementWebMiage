@@ -8,6 +8,8 @@ body {
     background-color: #121212;
     color: white;
     font-family: 'DM Sans', sans-serif;
+    padding-top: 100px;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -25,6 +27,13 @@ p { color: #cccccc; }
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #121212;
+    transition: top 0.3s ease-in-out;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .navdroite {
@@ -251,49 +260,73 @@ textarea {
     background-color: blue;
 }
 
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        padding: 10px;
+@media screen and (max-width: 768px) {
+
+    .toggle {
+        display: flex; 
+        z-index: 1001;
+        cursor: pointer;
     }
 
     .navdroite {
-        margin-top: 10px;
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        height: 100vh;
+        background-color: #1f1f1f;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: left 0.4s ease;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
     }
 
-    .section1 {
+    .navdroite.active {
+        left: 0;
+    }
+
+    .section1, .section3, .cards-container, .skills-container, .form-row {
         flex-direction: column;
+        align-items: center;
+    }
+    
+    .navdroite div {
+        width: 100%;
         text-align: center;
-        padding: 20px;
     }
 
-    .intro-text h2 {
-        font-size: 2rem;
+    .dot {
+        margin-top: 50px;
     }
 
-    .section2 p {
-        width: 90%;
+    .skill-box {
+        margin-top: 50px;
     }
 
-    .section3 {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
+    .section5 div{
+        background: inherit;
     }
+}
 
-    .cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
+.toggle{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+}
 
-    .skills-container {
-        flex-direction: column;
-        gap: 30px;
-        padding: 20px 0;
-    }
+.rectangle {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+}
 
-    .form-row {
-        flex-direction: column;
-        gap: 20px;
-    }
+.flex {
+    display: flex;
+    flex-direction: column;
 }
